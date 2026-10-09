@@ -1,0 +1,11 @@
+# QA plan step: prompt automation
+
+Focus: context, UI recon, Page/Component Object, test data, Playwright tests, review và flaky analysis.
+Input: `[REQUIREMENT_PATH]`, `[MODULE]`, output bước trước, `[BASE_URL]`/API spec khi phù hợp. Tách facts, assumptions và open questions.
+- Gắn ID requirement, risk, scenario, case, automation để traceability hai chiều.
+- Ưu tiên impact × likelihood; xét positive, negative, boundary, permission, state transition và cross-module.
+- Case ghi precondition, data, steps, expected result, priority. Dùng synthetic/placeholder data, uniqueness, cleanup.
+- Automation chỉ dùng TypeScript + `@playwright/test` + Playwright. Inspect DOM/accessible tree thật trước locator; API dùng `APIRequestContext`. Dùng semantic locator, auto-wait, web-first expect; cấm hard sleep/`page.waitForTimeout()`.
+- Thiếu evidence thì ghi blocker/câu hỏi, không bịa behavior, locator hoặc expected result.
+
+Output: artifact, trace links, coverage/risk còn lại, assumptions, bước kế tiếp.

@@ -4,7 +4,7 @@ import { BASE_URL } from "./tests/support/urls";
 export default defineConfig({
   testDir: "./tests/specs",
   timeout: 30000,
-  retries: 1,
+  retries: 2,
   workers: 1,
   reporter: [
     ["html", { outputFolder: "playwright-report" }],

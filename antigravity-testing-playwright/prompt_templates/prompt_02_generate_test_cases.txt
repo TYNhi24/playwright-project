@@ -1,0 +1,11 @@
+# Thiết kế test case
+
+Nguồn: [REQUIREMENT_PATH]
+Phạm vi: [MODULE_OR_FLOW]
+URL (nếu cần): [BASE_URL]
+
+Phân tích đầu vào, tách facts, assumptions, ambiguity, questions, risk, acceptance criteria và traceability. Không suy đoán behavior hoặc locator.
+
+Automation mặc định: TypeScript + @playwright/test + Playwright. UI phải inspect DOM thật trước locator; dùng fixture, semantic locator, auto-waiting và web-first assertion. API dùng APIRequestContext trong Playwright Test. Không hard sleep/page.waitForTimeout(), không đưa credentials thật vào prompt.
+
+Deliverable: thiết kế test case, có cấu trúc, traceable, data/cleanup nếu phù hợp, risks và mục chưa xác minh.

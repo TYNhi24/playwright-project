@@ -1,0 +1,30 @@
+---
+description: QA workflow for import test results xray.
+skills:
+  - jira_integration
+---
+
+# import test results xray
+
+**Trigger:** Khi người dùng yêu cầu import test results xray. **Automation stack:** TypeScript + `@playwright/test` + Playwright.
+**Dependencies:** `.agent/skills/jira_integration/SKILL.md` và rules liên quan trong `.agent/rules/`.
+
+## Input
+
+Nhận tài liệu, URL, test case, API spec hoặc Playwright artifact phù hợp. Dùng `[BASE_URL]`, `[REQUIREMENT_PATH]`, `[TEST_CASE_PATH]`. Không hỏi framework/runner. Khi cần Jira/Xray/site, xác minh quyền; secrets chỉ qua secret store/environment.
+
+## Các bước
+
+1. Nạp skill; kiểm tra nguồn, scope, quyền và thay đổi repo hiện có.
+2. Ghi facts, assumptions, gaps, ambiguity và risk; hỏi làm rõ khi expected behavior chưa đủ.
+3. Thực hiện tác vụ, giữ traceability requirement → risk → scenario/case → automation. UI phải inspect trang/DOM thật trước locator; API dùng `APIRequestContext`.
+4. Automation dùng semantic locator, fixture/object phù hợp, auto-waiting và web-first assertions. Không hard sleep/`page.waitForTimeout()`.
+5. Kiểm tra output, links, secrets, dependencies. Không tự cài package/gọi dịch vụ ngoài nếu chưa yêu cầu.
+
+## Task-specific checks
+
+Map Playwright JSON or supported Playwright reporter output to Xray only when explicitly requested. Preview project/test keys and attachments; never print auth material.
+
+## Output
+
+Trả artifact phù hợp: requirement/AC/Q&A/risk, trace matrix, test plan/cases/data, locator evidence, Playwright tests, diagnosis/fix, report hoặc integration mapping. Nêu coverage, artifacts, limits và điều chưa xác minh.
